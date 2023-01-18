@@ -1,0 +1,25 @@
+version: '3.7'
+
+services:
+  bootnode:
+    hostname: bootnode
+    build:
+      dockerfile: bootnode/Dockerfile
+      context: ..
+    volumes:
+      - bootstrap_data:/root/.ethereum
+    command:
+#      --nodiscover
+      --http
+      --ws
+      --http.addr="0.0.0.0"
+      --http.api="eth,web3,net"
+      --http.corsdomain="*"
+    ports:
+      - "8545:8545"
+      - "8546:8546"
+      - "30303:30303/tcp"
+      - "30303:30303/udp"
+
+volumes:
+  bootstrap_data:

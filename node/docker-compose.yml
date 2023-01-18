@@ -1,0 +1,23 @@
+version: '3.7'
+
+services:
+  node:
+    hostname: node
+    build:
+      dockerfile: node/Dockerfile
+      context: ..
+      args:
+        ACCOUNT_FILE: keystore/${KEY_FILE}
+    volumes:
+      - node_data:/root/.ethereum
+    command:
+      --bootnodes enode://${BOOTNODE_ENODE}@${BOOTNODE_ADDR}
+      --unlock ${ACCOUNT}
+      --password /tmp/pass
+      --mine
+    ports:
+      - "30303:30303"
+      - "30303:30303/udp"
+
+volumes:
+  node_data:
