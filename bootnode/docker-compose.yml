@@ -9,15 +9,8 @@ services:
     volumes:
       - bootstrap_data:/root/.ethereum
     command:
-#      --nodiscover
-      --http
-      --ws
-      --http.addr="0.0.0.0"
-      --http.api="eth,web3,net"
-      --http.corsdomain="*"
+      --nodiscover
     ports:
-      - "8545:8545"
-      - "8546:8546"
       - "30303:30303/tcp"
       - "30303:30303/udp"
 

@@ -1,0 +1,28 @@
+version: '3.7'
+
+services:
+  rpcnode:
+    hostname: rpcnode
+    build:
+      dockerfile: rpcnode/Dockerfile
+      context: ..
+    volumes:
+      - rpcnode_data:/root/.ethereum
+    command:
+      --bootnodes enode://${BOOTNODE_ENODE}@${BOOTNODE_ADDR}
+      --http
+      --ws
+      --http.addr="0.0.0.0"
+      --http.api="eth,web3,net"
+      --http.corsdomain="*"
+      --ws.addr="0.0.0.0"
+      --ws.api="eth,web3,net"
+      --ws.origins="*"
+    ports:
+      - "8545:8545"
+      - "8546:8546"
+      - "30303:30303/tcp"
+      - "30303:30303/udp"
+
+volumes:
+  rpcnode_data:

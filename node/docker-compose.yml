@@ -7,7 +7,7 @@ services:
       dockerfile: node/Dockerfile
       context: ..
       args:
-        ACCOUNT_FILE: keystore/${KEY_FILE}
+        ACCOUNT_FILE: ${KEY_FILE}
     volumes:
       - node_data:/root/.ethereum
     command:
