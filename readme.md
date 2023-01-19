@@ -45,36 +45,51 @@ on server 1:
 
 generate or copy `genesis.json` to `privchain` dir
 
+create `node/.env` (see .env.example):
+
 `cd privchain/bootnode`
+
 `docker-compose up -d`
 
 see enode in docker storage in `enode` file
+
 or attach geth and run:
+
 `admin.nodeInfo.enode`
+
 enode will be needed to setup other nodes
 
 
 ### 3. run n nodes
 
 on server n:
+
 `git clone https://github.com/pumpurum2/privchain.git`
 
 generate or copy `genesis.json` to `privchain` dir
+
 copy `keyfile.json` somewhere on server
+
 write to node/.password password for keyfile
 
 create `node/.env` (see .env.example):
 
 `cd privchain/node`
+
 `docker-compose up -d`
+
+remove node/.password
 
 ### 4. run rpc node
 
 on server n+2:
+
 `git clone https://github.com/pumpurum2/privchain.git`
 
 generate or copy `genesis.json` to `privchain` dir
+
 create `rpcnode/.env` (see .env.example):
 
 `cd privchain/rpcnode`
+
 `docker-compose up -d`

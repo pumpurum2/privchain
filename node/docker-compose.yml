@@ -14,6 +14,7 @@ services:
       --bootnodes enode://${BOOTNODE_ENODE}@${BOOTNODE_ADDR}
       --unlock ${ACCOUNT}
       --password /tmp/pass
+      --nat extip:${EXTERNAL_IP}
       --mine
     ports:
       - "30303:30303"

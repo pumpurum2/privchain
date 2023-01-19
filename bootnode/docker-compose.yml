@@ -10,6 +10,7 @@ services:
       - bootstrap_data:/root/.ethereum
     command:
       --nodiscover
+      --nat extip:${EXTERNAL_IP}
     ports:
       - "30303:30303/tcp"
       - "30303:30303/udp"
